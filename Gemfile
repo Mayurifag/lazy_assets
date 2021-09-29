@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
-### Sections of gems added after rails new
+### Sections of gems added after rails new --pre
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.0.alpha2"
@@ -27,7 +27,7 @@ gem "stimulus-rails", ">= 0.4.0"
 gem "redis", "~> 4.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+# gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
@@ -43,7 +43,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
-  gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -58,4 +58,13 @@ group :development do
 end
 
 ### Not default bundled gems
+gem "anyway_config"
+gem "awesome_rails_console",
+  github: "xunker/awesome_rails_console",
+  branch: "pry-0.13.0-compatibility"
+gem "fast_blank", platform: :mri
 gem "mobility"
+gem "nilify_blanks"
+gem "oj"
+gem "standard", group: :development
+gem "strong_migrations", group: :development
