@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
+### Sections of gems added after rails new
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.0.alpha2"
 
@@ -55,3 +57,5 @@ group :development do
   # gem "spring"
 end
 
+### Not default bundled gems
+gem "mobility"
