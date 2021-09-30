@@ -58,13 +58,18 @@ group :development do
 end
 
 ### Not default bundled gems
+gem "activerecord-postgres_enum"
+gem "after_commit_everywhere"
 gem "anyway_config"
 gem "awesome_rails_console",
   github: "xunker/awesome_rails_console",
   branch: "pry-0.13.0-compatibility"
+gem "dry-transaction"
 gem "fast_blank", platform: :mri
 gem "mobility"
+gem "money"
 gem "nilify_blanks"
 gem "oj"
 gem "standard", group: :development
 gem "strong_migrations", group: :development
+gem "translate_enum"

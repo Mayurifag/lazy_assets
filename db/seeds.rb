@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+BROKERS = [
+  {id: 1, name: "Other"},
+  {id: 2, name: "Binance"},
+  {id: 3, name: "KuCoin"},
+  {id: 4, name: "Interactive Brokers"},
+  {id: 5, name: "Открытие"},
+  {id: 6, name: "Тинькофф"},
+  {id: 7, name: "ВТБ"}
+]
+
+Broker.insert_all!(BROKERS)
