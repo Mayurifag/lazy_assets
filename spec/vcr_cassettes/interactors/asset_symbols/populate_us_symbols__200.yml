@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://finnhub.io/api/v1/stock/symbol?exchange=US&token=<FINNHUB_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - OpenAPI-Generator/1.1.9/ruby
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sat, 02 Oct 2021 20:53:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4239170'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Content-Length
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '59'
+      X-Ratelimit-Reset:
+      - '1633208074'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=Xav15DnI3WUoO3UA%2FeGSiC%2F2tZ4ig5ymGkWtFU67aFnh2JtpQDOtThCQk6r2iymCoC48VCmLbb0HpdRYdpQzbNjDslD4h1ZPD51zV0HUNf7D6Mg%2F5Z9VjzJukZij"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6980d2290ada1752-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"currency":"USD","description":"PEPINNINI MINERALS LTD","displaySymbol":"PEIMF","figi":"BBG000NSVVL6","mic":"OOTC","symbol":"PEIMF","type":"Common Stock"},
+        {"currency":"USD","description":"Test","displaySymbol":"ZXIET","figi":"","mic":"IEXG","symbol":"ZXIET","type":""}]'
+  recorded_at: Sat, 02 Oct 2021 20:53:36 GMT
+recorded_with: VCR 6.0.0
