@@ -6,41 +6,42 @@ class CreateStocks < ActiveRecord::Migration[7.0]
     create_enum :currency, %w[USD RUB]
 
     create_table :sectors do |t|
-      t.jsonb :translations, null: false, default: {}
+      t.string :name_ru, index: {unique: true}
+      t.string :name_en, index: {unique: true}
 
       t.timestamps
     end
-    add_index :sectors, :translations, using: :gin
 
     create_table :exchanges do |t|
-      t.string :name, null: false, index: true
+      t.string :name, null: false, index: {unique: true}
       t.string :country
+      t.string :mic, null: false, index: {unique: true}
+
+      t.timestamps default: -> { "CURRENT_TIMESTAMP" }
+    end
+
+    create_table :asset_symbols do |t|
+      t.string :name_ru
+      t.string :name_en
+      t.references :exchange, null: false
+      t.string :symbol, index: {unique: true}
+      t.string :last_source
+      t.jsonb :last_source_initial_attributes
 
       t.timestamps
     end
-
-    create_table :assets_symbols do |t|
-      t.jsonb :translations, null: false, default: {}
-      t.references :sector
-      t.references :exchange
-      t.string :source
-      t.jsonb :initial_attributes
-
-      t.timestamps
-    end
-    add_index :assets_symbols, :translations, using: :gin
 
     create_table :brokers do |t|
-      t.string :name, null: false, index: true
+      t.string :name, null: false, index: {unique: true}
 
-      t.timestamps
+      t.timestamps default: -> { "CURRENT_TIMESTAMP" }
     end
 
     create_table :assets, id: :uuid do |t|
       t.integer :average_price_in_cents, null: false, default: 0
       t.enum :average_price_currency, enum_name: :currency
       t.decimal :quantity, null: false, default: 0
-      t.references :asset_symbol, null: false
+      t.references :asset_symbol, null: false, index: {unique: true}
       t.jsonb :quantity_in_brokers
       t.jsonb :other
 
