@@ -35,6 +35,7 @@ gem "finnhub_ruby"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
+gem "strong_migrations"
 gem "translate_enum"
 
 group :development, :test do
@@ -53,7 +54,6 @@ group :development do
   gem "ordinare", require: false
   gem "ruby_audit", require: false
   gem "standard"
-  gem "strong_migrations"
 end
 
 group :test do
