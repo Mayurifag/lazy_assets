@@ -1,0 +1,5 @@
+--require spec_helper
+--format progress
+--format RspecJunitFormatter
+--out rspec/rspec<%= ENV['TEST_ENV_NUMBER'] %>.xml
+--profile 10

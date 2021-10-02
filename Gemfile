@@ -3,34 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
-### Sections of gems added after rails new --pre
-
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.0.alpha2"
-
-# Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
-
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
-
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails", ">= 0.3.4"
-
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", ">= 0.7.11"
-
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails", ">= 0.4.0"
-
-# Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
-# Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
+gem "importmap-rails", ">= 0.3.4"
+gem "pg", "~> 1.1"
+gem "puma", "~> 5.0"
+gem "rails", "~> 7.0.0.alpha2"
+gem "redis", "~> 4.0"
+gem "stimulus-rails", ">= 0.4.0"
+gem "turbo-rails", ">= 0.7.11"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -41,24 +21,9 @@ gem "bootsnap", ">= 1.4.4", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-group :development, :test do
-  # Start debugger with binding.b [https://github.com/ruby/debug]
-  gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]
-end
-
-group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console", ">= 4.1.0"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler", ">= 2.3.3"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-end
-
-### Not default bundled gems
-gem "activerecord-postgres_enum"
+gem "activerecord-postgres_enum",
+  github: "noelrappin/activerecord-postgres_enum",
+  branch: "master"
 gem "after_commit_everywhere"
 gem "anyway_config"
 gem "awesome_rails_console",
@@ -70,7 +35,33 @@ gem "finnhub_ruby"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
-gem "oj"
-gem "standard", group: :development
-gem "strong_migrations", group: :development
 gem "translate_enum"
+
+group :development, :test do
+  gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]
+  gem "factory_bot_rails"
+  gem "factory_trace"
+  gem "isolator"
+  gem "parallel_tests"
+  gem "rspec-rails"
+end
+
+group :development do
+  gem "brakeman", require: false
+  # gem "bullet"
+  gem "bundler-audit", require: false
+  gem "ordinare", require: false
+  gem "ruby_audit", require: false
+  gem "standard"
+  gem "strong_migrations"
+end
+
+group :test do
+  gem "simplecov"
+  gem "simplecov-console"
+  gem "rspec_junit_formatter"
+  gem "test-prof"
+  gem "webmock"
+  gem "zonebie"
+  gem "vcr"
+end

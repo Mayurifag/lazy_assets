@@ -29,3 +29,6 @@
 
 /config/*.local.yml
 /config/credentials/local.*
+
+/coverage/
+spec/examples.txt
