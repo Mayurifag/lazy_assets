@@ -16,4 +16,18 @@ BROKERS = [
   {id: 7, name: "ВТБ"}
 ]
 
-Broker.insert_all!(BROKERS)
+Broker.upsert_all(BROKERS)
+
+EXCHANGES = [
+  {id: 1, name: "Moscow Stock Exchange", country: "Russia", mic: "MISX"},
+  {id: 2, name: "Other OTC", country: "US", mic: "OOTC"},
+  {id: 3, name: "Nasdaq", country: "US", mic: "XNAS"},
+  {id: 4, name: "NYSE Arca", country: "US", mic: "ARCX"},
+  {id: 5, name: "New York Stock Exchange", country: "US", mic: "XNYS"},
+  {id: 6, name: "Cboe Bzx U.s. Equities Exchange", country: "US", mic: "BATS"},
+  {id: 7, name: "Nyse Mkt LLC", country: "US", mic: "XASE"}
+]
+
+Exchange.upsert_all(EXCHANGES)
+
+AssetSymbols::PopulateMoexSymbols.call
