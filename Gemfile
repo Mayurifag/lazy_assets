@@ -66,6 +66,7 @@ gem "awesome_rails_console",
   branch: "pry-0.13.0-compatibility"
 gem "dry-transaction"
 gem "fast_blank", platform: :mri
+gem "finnhub_ruby"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"

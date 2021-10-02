@@ -21,5 +21,11 @@ module Transactions
     step :calculate_total_price
     step :save_transaction
     tee :publish_event
+
+    private
+
+    def calculate_total_price(input)
+      123
+    end
   end
 end

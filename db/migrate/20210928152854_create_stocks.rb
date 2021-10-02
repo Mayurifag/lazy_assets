@@ -23,6 +23,8 @@ class CreateStocks < ActiveRecord::Migration[7.0]
       t.jsonb :translations, null: false, default: {}
       t.references :sector
       t.references :exchange
+      t.string :source
+      t.jsonb :initial_attributes
 
       t.timestamps
     end
