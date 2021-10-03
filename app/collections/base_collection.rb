@@ -1,4 +1,4 @@
-class ApplicationConfig < Anyway::Config
+class BaseCollection
   class << self
     # Make it possible to access a singleton config instance
     # via class methods (i.e., without explictly calling `instance`)
