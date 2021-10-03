@@ -27,6 +27,24 @@ RSpec.describe Assets::CreateOrUpdateAsset, type: :interactor do
         expect { subject }
           .to change { Asset.count }.from(0).to(1)
       end
+
+      context "when service called 2 times in a row" do
+        subject { 2.times { described_class.call(params) } }
+
+        it "creates single asset and updates it" do
+          expect { subject }
+            .to change { Asset.count }.from(0).to(1)
+            .and change { Asset.take&.quantity }.to(10)
+            .and change { Asset.take&.quantity_in_brokers&.fetch(broker.name) }.to("10.0")
+        end
+      end
+
+      context "when cant be saved into db" do
+        before { allow_any_instance_of(Asset).to receive(:save!).and_raise(ActiveRecord::RecordInvalid) }
+
+        it { is_expected.to be_failure }
+        it { expect { subject }.not_to change { Asset.count }.from(0) }
+      end
     end
 
     context "when there is asset with same asset_symbol" do

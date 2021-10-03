@@ -43,14 +43,11 @@ module Assets
         add_price: input[:add_price_in_cents],
         add_quantity: input[:add_quantity]
       }
+      prev_broker_quantity = asset.quantity_in_brokers[input[:broker].name].to_d
+
       asset.average_price_in_cents = NewAveragePriceCalculation.call(params).success
       asset.quantity = asset.quantity + input[:add_quantity]
-      asset.quantity_in_brokers[input[:broker].name] =
-        if asset.quantity_in_brokers[input[:broker].name].present?
-          asset.quantity_in_brokers[input[:broker].name].to_d + input[:add_quantity]
-        else
-          input[:add_quantity]
-        end
+      asset.quantity_in_brokers[input[:broker].name] = prev_broker_quantity + input[:add_quantity]
       asset
     end
 
