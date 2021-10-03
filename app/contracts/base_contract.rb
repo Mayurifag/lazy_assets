@@ -1,4 +1,8 @@
+require "dry/transaction/operation"
+
 class BaseContract < Dry::Validation::Contract
+  include Dry::Transaction::Operation
+
   config.messages.backend = :i18n
 
   def self.validate_input(input)

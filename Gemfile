@@ -30,6 +30,7 @@ gem "awesome_rails_console",
   github: "xunker/awesome_rails_console",
   branch: "pry-0.13.0-compatibility"
 gem "dry-transaction"
+gem "dry-validation"
 gem "fast_blank", platform: :mri
 gem "finnhub_ruby"
 gem "mobility"
