@@ -30,4 +30,7 @@ EXCHANGES = [
 
 Exchange.upsert_all(EXCHANGES)
 
+puts "populating moex"
 AssetSymbols::PopulateMoexSymbols.call
+puts "populating us"
+AssetSymbols::PopulateUsSymbols.call

@@ -47,8 +47,9 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
   create_table "assets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "asset_symbol_id", null: false
     t.enum "average_price_currency", enum_name: "currency"
-    t.integer "average_price_in_cents", default: 0, null: false
+    t.decimal "average_price_in_cents", default: "0.0", null: false
     t.datetime "created_at", precision: 6, null: false
+    t.integer "lock_version", default: 0
     t.jsonb "other"
     t.decimal "quantity", default: "0.0", null: false
     t.jsonb "quantity_in_brokers"
@@ -86,16 +87,18 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
   create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "accured_interest_in_cents"
     t.enum "action", enum_name: "action"
-    t.bigint "assets_symbols_id", null: false
+    t.bigint "asset_symbol_id", null: false
+    t.bigint "broker_id", null: false
     t.datetime "created_at", precision: 6, null: false
-    t.enum "currency", enum_name: "currency"
-    t.date "date"
-    t.integer "price_commission_in_cents", default: 0, null: false
-    t.integer "price_in_cents", default: 0, null: false
+    t.enum "currency", null: false, enum_name: "currency"
+    t.date "date", default: -> { "CURRENT_TIMESTAMP" }
+    t.integer "price_for_one_asset_in_cents", default: 0, null: false
     t.decimal "quantity", null: false
+    t.integer "total_price_commission_in_cents", default: 0, null: false
     t.integer "total_price_in_cents", default: 0, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["assets_symbols_id"], name: "index_transactions_on_assets_symbols_id"
+    t.index ["asset_symbol_id"], name: "index_transactions_on_asset_symbol_id"
+    t.index ["broker_id"], name: "index_transactions_on_broker_id"
   end
 
 end
