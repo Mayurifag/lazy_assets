@@ -164,6 +164,8 @@ GEM
       railties (>= 5.0.0)
     factory_trace (0.4.1)
       factory_bot (>= 4.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     fast_blank (1.0.1)
     ffi (1.15.4)
     finnhub_ruby (1.1.9)
@@ -360,6 +362,7 @@ DEPENDENCIES
   dry-validation
   factory_bot_rails
   factory_trace
+  faker
   fast_blank
   finnhub_ruby
   importmap-rails (>= 0.3.4)

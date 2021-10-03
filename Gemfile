@@ -58,6 +58,7 @@ group :development do
 end
 
 group :test do
+  gem "faker"
   gem "simplecov"
   gem "simplecov-console"
   gem "rspec_junit_formatter"

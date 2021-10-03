@@ -38,12 +38,13 @@ class CreateStocks < ActiveRecord::Migration[7.0]
     end
 
     create_table :assets, id: :uuid do |t|
-      t.integer :average_price_in_cents, null: false, default: 0
+      t.decimal :average_price_in_cents, null: false, default: 0
       t.enum :average_price_currency, enum_name: :currency
       t.decimal :quantity, null: false, default: 0
       t.references :asset_symbol, null: false, index: {unique: true}
       t.jsonb :quantity_in_brokers
       t.jsonb :other
+      t.integer :lock_version, default: 0
 
       t.timestamps
     end
@@ -51,14 +52,15 @@ class CreateStocks < ActiveRecord::Migration[7.0]
 
     create_table :transactions, id: :uuid do |t|
       t.enum :action, enum_name: :action
-      t.references :assets_symbols, null: false
+      t.references :asset_symbol, null: false
+      t.references :broker, null: false
       t.decimal :quantity, null: false
-      t.integer :price_in_cents, null: false, default: 0
+      t.integer :price_for_one_asset_in_cents, null: false, default: 0
       t.integer :total_price_in_cents, null: false, default: 0
-      t.integer :price_commission_in_cents, null: false, default: 0
+      t.integer :total_price_commission_in_cents, null: false, default: 0
       t.integer :accured_interest_in_cents
-      t.enum :currency, enum_name: :currency
-      t.date :date
+      t.enum :currency, enum_name: :currency, null: false
+      t.date :date, default: -> { "CURRENT_TIMESTAMP" }
 
       t.timestamps
     end
