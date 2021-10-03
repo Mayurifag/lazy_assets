@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
     t.index ["symbol"], name: "index_asset_symbols_on_symbol", unique: true
   end
 
-  create_table "assets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "assets", force: :cascade do |t|
     t.bigint "asset_symbol_id", null: false
     t.enum "average_price_currency", enum_name: "currency"
     t.decimal "average_price_in_cents", default: "0.0", null: false
@@ -87,17 +87,17 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
   create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "accured_interest_in_cents"
     t.enum "action", enum_name: "action"
-    t.bigint "asset_symbol_id", null: false
+    t.bigint "asset_id", null: false
     t.bigint "broker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.enum "currency", null: false, enum_name: "currency"
     t.date "date", default: -> { "CURRENT_TIMESTAMP" }
-    t.integer "price_for_one_asset_in_cents", default: 0, null: false
+    t.decimal "price_for_one_asset_in_cents", default: "0.0", null: false
     t.decimal "quantity", null: false
     t.integer "total_price_commission_in_cents", default: 0, null: false
     t.integer "total_price_in_cents", default: 0, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["asset_symbol_id"], name: "index_transactions_on_asset_symbol_id"
+    t.index ["asset_id"], name: "index_transactions_on_asset_id"
     t.index ["broker_id"], name: "index_transactions_on_broker_id"
   end
 

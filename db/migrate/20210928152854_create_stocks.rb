@@ -37,7 +37,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
       t.timestamps default: -> { "CURRENT_TIMESTAMP" }
     end
 
-    create_table :assets, id: :uuid do |t|
+    create_table :assets do |t|
       t.decimal :average_price_in_cents, null: false, default: 0
       t.enum :average_price_currency, enum_name: :currency
       t.decimal :quantity, null: false, default: 0
@@ -55,7 +55,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
       t.references :asset, null: false
       t.references :broker, null: false
       t.decimal :quantity, null: false
-      t.integer :price_for_one_asset_in_cents, null: false, default: 0
+      t.decimal :price_for_one_asset_in_cents, null: false, default: 0
       t.integer :total_price_in_cents, null: false, default: 0
       t.integer :total_price_commission_in_cents, null: false, default: 0
       t.integer :accured_interest_in_cents

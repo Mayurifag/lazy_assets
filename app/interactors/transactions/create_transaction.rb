@@ -1,4 +1,5 @@
 module Transactions
+  # TODO: для продажи действие и др.
   class CreateTransaction < BaseInteractor
     class Contract < BaseContract
       params do
@@ -27,7 +28,7 @@ module Transactions
 
     def calculate_price_for_one_asset(input)
       params = {
-        total: input[:total_price_in_cents],
+        total_price_in_cents: input[:total_price_in_cents],
         quantity: input[:quantity]
       }
       calc = SingleAssetPriceCalculation.call(params)
@@ -51,20 +52,16 @@ module Transactions
       asset_interactor = Assets::CreateOrUpdateAsset.call(params)
 
       if asset_interactor.success?
-        Success(input.merge(asset: asset_interactor.success))
+        Success(input.merge(asset: asset_interactor.success).except(:asset_symbol))
       else
         Failure(errors: asset_interactor.failure[:errors])
       end
     end
 
-    TRANSACTION_ATTRIBUTES = %i[action asset broker quantity
-      price_for_one_asset_in_cents total_price_in_cents currency date
-      total_price_commission_in_cents accured_interest_in_cents]
-    private_constant :TRANSACTION_ATTRIBUTES
-
     def save_transaction(input)
-      attributes = input.slice TRANSACTION_ATTRIBUTES
-      Success(transaction: Transaction.new(attributes).save!)
+      transaction = Transaction.new(input)
+      transaction.save!
+      Success(transaction: transaction)
     rescue => e
       Failure(e)
     end

@@ -1,5 +1,6 @@
 class BaseContainer
-  extend Dry::Container
+  extend Dry::Container::Mixin
+  extend Dry::Monads::Result::Mixin
 
   register "transaction" do |input, &block|
     result = nil

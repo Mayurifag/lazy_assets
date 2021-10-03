@@ -61,7 +61,8 @@ module Assets
     end
 
     def save_asset(input)
-      Success(asset: input[:asset].save!)
+      input[:asset].save!
+      Success(input[:asset])
     rescue => e
       Failure(e)
     end
