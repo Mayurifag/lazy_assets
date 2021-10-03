@@ -52,7 +52,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
 
     create_table :transactions, id: :uuid do |t|
       t.enum :action, enum_name: :action
-      t.references :asset_symbol, null: false
+      t.references :asset, null: false
       t.references :broker, null: false
       t.decimal :quantity, null: false
       t.integer :price_for_one_asset_in_cents, null: false, default: 0
