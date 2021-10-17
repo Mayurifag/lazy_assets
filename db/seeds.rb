@@ -34,3 +34,25 @@ puts "populating moex"
 AssetSymbols::PopulateMoexSymbols.call
 puts "populating us"
 AssetSymbols::PopulateUsSymbols.call
+
+Transactions::CreateTransaction.call({
+  action: "buy",
+  date: Date.today,
+  currency: "USD",
+  total_price_in_cents: 1000,
+  quantity: 10,
+  total_price_commission_in_cents: 10,
+  asset_symbol: AssetSymbol.find_by(symbol: "AAPL"),
+  broker: Broker.find_by(name: "Тинькофф")
+})
+
+Transactions::CreateTransaction.call({
+  action: "buy",
+  date: Date.yesterday,
+  currency: "USD",
+  total_price_in_cents: 900,
+  quantity: 10,
+  total_price_commission_in_cents: 50,
+  asset_symbol: AssetSymbol.find_by(symbol: "AAPL"),
+  broker: Broker.find_by(name: "ВТБ")
+})
