@@ -33,6 +33,7 @@ gem "dry-transaction"
 gem "dry-validation"
 gem "fast_blank", platform: :mri
 gem "finnhub_ruby"
+gem "graphql"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
@@ -43,8 +44,10 @@ group :development, :test do
   gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot_rails"
   gem "factory_trace"
+  gem "graphiql-rails"
   gem "isolator"
   gem "parallel_tests"
+  gem "routes_lazy_routes"
   gem "rspec-rails"
 end
 
