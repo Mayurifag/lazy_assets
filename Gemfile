@@ -34,6 +34,7 @@ gem "dry-validation"
 gem "fast_blank", platform: :mri
 gem "finnhub_ruby"
 gem "graphql"
+gem "graphql-batch"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
@@ -62,11 +63,11 @@ end
 
 group :test do
   gem "faker"
+  gem "rspec_junit_formatter"
   gem "simplecov"
   gem "simplecov-console"
-  gem "rspec_junit_formatter"
   gem "test-prof"
+  gem "vcr"
   gem "webmock"
   gem "zonebie"
-  gem "vcr"
 end
