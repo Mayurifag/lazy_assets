@@ -56,3 +56,25 @@ Transactions::CreateTransaction.call({
   asset_symbol: AssetSymbol.find_by(symbol: "AAPL"),
   broker: Broker.find_by(name: "ВТБ")
 })
+
+Transactions::CreateTransaction.call({
+  action: "buy",
+  date: Date.yesterday,
+  currency: "USD",
+  total_price_in_cents: 900,
+  quantity: 10,
+  total_price_commission_in_cents: 50,
+  asset_symbol: AssetSymbol.find_by(symbol: "INTC"),
+  broker: Broker.find_by(name: "ВТБ")
+})
+
+Transactions::CreateTransaction.call({
+  action: "buy",
+  date: Date.yesterday,
+  currency: "USD",
+  total_price_in_cents: 900,
+  quantity: 10,
+  total_price_commission_in_cents: 50,
+  asset_symbol: AssetSymbol.find_by(symbol: "MSFT"),
+  broker: Broker.find_by(name: "ВТБ")
+})
