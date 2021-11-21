@@ -10,10 +10,11 @@
 
 ## Repository
 
-- Add codegen things
-- Make docker configuration
-- Add Makefile, dip, etc.
 - Make cool hipster README.md
+
+## Makefiles
+
+- Test, add readme info
 
 ## Not related but helpful
 
