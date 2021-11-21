@@ -4,7 +4,7 @@ up:
 down:
 	docker-compose down --remove-orphans
 
-start: up bind
+start: up
 
 stop: down
 

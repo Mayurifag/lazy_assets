@@ -32,5 +32,3 @@ RUN apk add --update --no-cache \
 WORKDIR /usr/src/app
 
 COPY . .
-
-RUN bundle install -j $(nproc)

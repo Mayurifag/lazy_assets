@@ -38,6 +38,7 @@ gem "graphql-batch"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
+gem "rack-cors"
 gem "strong_migrations"
 gem "translate_enum"
 
