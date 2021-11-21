@@ -1,0 +1,83 @@
+---
+version: '2.4'
+
+services:
+  db:
+    image: postgres:${POSTGRES_VERSION:-14-alpine}
+    ports:
+      - "15433:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 1s
+
+  backend:
+    build:
+      context: backend
+    volumes:
+      - ./backend:/usr/src/app:cached
+      - rails_cache:/usr/src/app/tmp/cache
+      - bundle:/bundle
+    environment:
+      - RAILS_ENV=${RAILS_ENV:-development}
+      - BOOTSNAP_CACHE_DIR=/bundle/bootsnap
+      - MALLOC_ARENA_MAX=2
+      - WEB_CONCURRENCY=${WEB_CONCURRENCY:-1}
+      - REDIS_URL=redis://redis:16379/
+      - EDITOR=vi
+    command: >
+      sh -c "rm -f /usr/src/app/tmp/pids/server.pid ;
+      bundle exec rails s -p 3000 -b 0.0.0.0"
+    ports:
+      - "18888:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
+  redis:
+    image: redis:6-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - "16379:6379"
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  frontend:
+    build:
+      context: frontend
+    environment:
+      - NODE_ENV=development
+      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+      # REACT_NATIVE_PACKAGER_HOSTNAME: ${MY_LAN_IP}
+    volumes:
+      - ./frontend:/usr/src/app:cached
+      - ./frontend/package.json:/usr/src/app/package.json
+      - ./frontend/yarn.lock:/usr/src/app/yarn.lock
+      - node_modules:/usr/src/app/node_modules
+      # - packs:/usr/src/app/public/packs
+    # command: yarn run start
+    ports:
+      - "19000-19006:19000-19006"
+    stdin_open: true
+    tty: true
+
+volumes:
+  db-data:
+  redis:
+  bundle:
+  node_modules:
+  rails_cache:
+  # packs:
