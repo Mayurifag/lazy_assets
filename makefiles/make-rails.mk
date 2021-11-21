@@ -6,3 +6,9 @@ upg:
 
 seed:
 	docker-compose exec backend rails db:seed
+
+rc:
+	docker-compose exec backend rails console
+
+cred:
+	EDITOR=vim docker-compose exec backend rails credentials:edit

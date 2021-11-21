@@ -10,7 +10,6 @@ interface TransactionsProps {
 const TransactionsList: React.FC<TransactionsProps> = ({
   transactions,
 }: TransactionsProps) => {
-  console.log(transactions);
   return (
     <>
       <div className="transactions-list">

@@ -21,6 +21,7 @@ RUN apk add --update --no-cache \
         postgresql-client \
         tzdata \
         xz-dev \
+        vim \
     && ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" > /etc/timezone \
     && echo 'gem: --no-document' >> ~/.gemrc \
