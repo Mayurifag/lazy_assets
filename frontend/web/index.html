@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="%LANG_ISO_CODE%">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.00001, viewport-fit=cover"
+    />
+    <title>%WEB_TITLE%</title>
+    <style>
+      html,
+      body,
+      #root {
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+        margin: 0px;
+        padding: 0px;
+        min-height: 100%;
+      }
+      #root {
+        flex-shrink: 0;
+        flex-basis: auto;
+        flex-grow: 1;
+        display: flex;
+        flex: 1;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        height: calc(100% + env(safe-area-inset-top));
+      }
+
+      body {
+        display: flex;
+        overflow-y: auto;
+        overscroll-behavior-y: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -ms-overflow-style: scrollbar;
+      }
+      /*@media (prefers-color-scheme: dark) {
+        body {
+          background-color: black;
+        }
+      }*/
+    </style>
+  </head>
+
+  <body>
+    <noscript>
+      <p>Oh no! It looks like JavaScript is not enabled in your browser.</p>
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>
