@@ -20,7 +20,7 @@ RSpec.describe Types::QueryType do
     end
 
     subject(:result) do
-      LazyAssetsSchema.execute(query).as_json
+      ApiSchema.execute(query).as_json
     end
 
     it "returns all currencies" do

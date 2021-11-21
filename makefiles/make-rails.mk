@@ -10,5 +10,8 @@ seed:
 rc:
 	docker-compose exec backend rails console
 
+rspec:
+	RAILS_ENV=test docker-compose run backend bundle exec rspec $(ARGS)
+
 cred:
 	EDITOR=vim docker-compose exec backend rails credentials:edit

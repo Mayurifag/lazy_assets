@@ -1,4 +1,4 @@
-class LazyAssetsSchema < GraphQL::Schema
+class ApiSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 

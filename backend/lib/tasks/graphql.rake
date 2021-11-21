@@ -8,8 +8,8 @@ namespace :graphql do
 
     GraphQL::RakeTask.new(
       load_schema: ->(_task) {
-        require File.expand_path("../../app/graphql/lazy_assets_schema", __dir__)
-        LazyAssetsSchema
+        require File.expand_path("../../app/graphql/api_schema", __dir__)
+        ApiSchema
       },
       directory: "./config/"
     )
