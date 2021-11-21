@@ -8,9 +8,11 @@ RSpec.describe Types::QueryType do
   let_it_be(:broker) { create :broker }
   let_it_be(:transactions) { create_pair(:transaction, broker: broker, asset: asset) }
 
+  # TODO: full check until asset symbol name, etc.
+
   describe "transactions" do
     let(:query) do
-      %(query {
+      %(query GetTransactions {
         transactions {
           currency
         }
