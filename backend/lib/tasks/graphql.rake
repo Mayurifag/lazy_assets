@@ -11,7 +11,7 @@ namespace :graphql do
         require File.expand_path("../../app/graphql/lazy_assets_schema", __dir__)
         LazyAssetsSchema
       },
-      directory: "../frontend/"
+      directory: "./config/"
     )
     Rake::Task["graphql:schema:json"].invoke
   end

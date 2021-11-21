@@ -13,7 +13,7 @@ EXPOSE 19000-19006
 #     && npm install -g expo-cli --unsafe-perm \
 #     ;
 
-RUN yarn global add expo-cli \
+RUN yarn global add expo-cli apollo \
     ;
 
 WORKDIR /usr/src/app

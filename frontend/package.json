@@ -10,7 +10,8 @@
     "eject": "expo eject",
     "build-web": "expo build:web",
     "build-web-debug": "EXPO_WEB_DEBUG=true expo build:web",
-    "customize-web": "expo customize:web"
+    "customize-web": "expo customize:web",
+    "generate-schema": "apollo codegen:generate --localSchemaFile=schema.json --target=typescript --tagName=gql"
   },
   "dependencies": {
     "@apollo/client": "^3.4.17",

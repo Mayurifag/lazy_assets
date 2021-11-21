@@ -1,5 +1,5 @@
 up:
-	docker-compose up -d backend db redis frontend
+	docker-compose up -d
 
 down:
 	docker-compose down --remove-orphans
@@ -24,3 +24,9 @@ upg:
 
 seed:
 	docker-compose exec backend rails db:seed
+
+gen-schema:
+	docker-compose exec backend rails graphql:dump_schema
+	cp ./backend/config/schema.json ./frontend/schema.json
+	docker-compose exec frontend yarn run generate-schema
+	rm ./backend/config/schema.json

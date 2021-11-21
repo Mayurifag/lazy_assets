@@ -7,22 +7,22 @@
 // GraphQL query operation: GetTransactions
 // ====================================================
 
-export interface GetTransactions_getTransactions_asset {
+export interface GetTransactions_transactions_asset {
   __typename: "Asset";
   id: string;
   assetSymbolId: number;
   quantity: number;
 }
 
-export interface GetTransactions_getTransactions {
+export interface GetTransactions_transactions {
   __typename: "Transaction";
   id: string;
-  asset: GetTransactions_getTransactions_asset;
+  asset: GetTransactions_transactions_asset;
 }
 
 export interface GetTransactions {
   /**
    * Returns a list of transactions
    */
-  getTransactions: GetTransactions_getTransactions[];
+  transactions: GetTransactions_transactions[];
 }

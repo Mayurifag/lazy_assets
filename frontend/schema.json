@@ -340,7 +340,7 @@
           "description": null,
           "fields": [
             {
-              "name": "getTransactions",
+              "name": "transactions",
               "description": "Returns a list of transactions",
               "args": [
 
