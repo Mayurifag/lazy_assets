@@ -4,6 +4,7 @@ module Types
     field :average_price_in_cents, Float, null: false
     field :average_price_currency, String, null: true
     field :quantity, Float, null: false
+    # TODO: make loading this
     field :asset_symbol_id, Integer, null: false
     # field :quantity_in_brokers, Types::JsonbType, null: true
     # field :other, Types::JsonbType, null: true
