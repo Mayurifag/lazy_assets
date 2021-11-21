@@ -6,7 +6,7 @@
 
 ## Backend
 
-...
+- Rename lazy assets -> api
 
 ## Repository
 
