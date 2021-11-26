@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
+  if FeaturesConfig.enable_graphiql?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
   post "/graphql", to: "graphql#execute"
