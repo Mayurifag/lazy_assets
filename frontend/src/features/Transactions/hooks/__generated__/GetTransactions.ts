@@ -37,11 +37,13 @@ export interface GetTransactions_transactions {
   broker: GetTransactions_transactions_broker;
   quantity: number;
   priceForOneAssetInCents: number;
-  totalPriceInCents: number;
-  totalPriceCommissionInCents: number;
   accuredInterestInCents: number | null;
   currency: string;
   date: any | null;
+  totalPricePresented: string;
+  totalPriceCommissionPresented: string;
+  priceForOneAssetPresented: string;
+  accuredInterestPresented: string;
 }
 
 export interface GetTransactions {

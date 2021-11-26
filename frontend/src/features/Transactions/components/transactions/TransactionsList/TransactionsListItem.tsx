@@ -7,9 +7,19 @@ const TransactionsListItem: React.FC<{ transaction: Transaction }> = ({
   transaction: Transaction;
 }) => {
   return (
-    <div>
-      <p>{transaction.id}</p>
-      <p>{transaction.asset.quantity}</p>
+    <div id={transaction.id}>
+      <p>{transaction.action}</p>
+      <p>
+        {transaction.asset.assetSymbol.nameEn}
+        {" / "}
+        {transaction.asset.assetSymbol.symbol}
+      </p>
+      <p>{transaction.date}</p>
+      <p>{transaction.quantity}</p>
+      <p>{transaction.priceForOneAssetPresented}</p>
+      <p>{transaction.totalPriceCommissionPresented}</p>
+      <p>{transaction.accuredInterestPresented}</p>
+      <p>{transaction.totalPricePresented}</p>
     </div>
   );
 };

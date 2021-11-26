@@ -29,11 +29,13 @@ RSpec.describe Types::QueryType do
             }
             quantity
             priceForOneAssetInCents
-            totalPriceInCents
-            totalPriceCommissionInCents
             accuredInterestInCents
             currency
             date
+            totalPricePresented
+            totalPriceCommissionPresented
+            priceForOneAssetPresented
+            accuredInterestPresented
           }
         }
       )

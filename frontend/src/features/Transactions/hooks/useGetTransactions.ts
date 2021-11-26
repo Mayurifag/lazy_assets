@@ -20,11 +20,13 @@ export const GET_TRANSACTIONS = gql`
       }
       quantity
       priceForOneAssetInCents
-      totalPriceInCents
-      totalPriceCommissionInCents
       accuredInterestInCents
       currency
       date
+      totalPricePresented
+      totalPriceCommissionPresented
+      priceForOneAssetPresented
+      accuredInterestPresented
     }
   }
 `;
