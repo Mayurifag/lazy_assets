@@ -7,6 +7,9 @@ upg:
 seed:
 	docker-compose exec backend rails db:seed
 
+rg:
+	docker-compose exec backend rails generate $(ARGS)
+
 rc:
 	docker-compose exec backend rails console
 

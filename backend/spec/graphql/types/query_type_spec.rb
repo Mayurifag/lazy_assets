@@ -8,25 +8,44 @@ RSpec.describe Types::QueryType do
   let_it_be(:broker) { create :broker }
   let_it_be(:transactions) { create_pair(:transaction, broker: broker, asset: asset) }
 
-  # TODO: full check until asset symbol name, etc.
-
   describe "transactions" do
     let(:query) do
-      %(query GetTransactions {
-        transactions {
-          currency
+      %(
+        query GetTransactions {
+          transactions {
+            action
+            id
+            asset {
+              assetSymbol {
+                nameEn
+                symbol
+                exchange {
+                  name
+                }
+              }
+            }
+            broker {
+              name
+            }
+            quantity
+            priceForOneAssetInCents
+            totalPriceInCents
+            totalPriceCommissionInCents
+            accuredInterestInCents
+            currency
+            date
+          }
         }
-      })
+      )
     end
 
     subject(:result) do
       ApiSchema.execute(query).as_json
     end
 
-    it "returns all currencies" do
-      expect(result.dig("data", "transactions")).to match_array(
-        transactions.map { |transaction| {"currency" => transaction.currency} }
-      )
+    it "returns correctly answers with array of Transaction's hashes" do
+      expect(result.dig("data", "transactions", 0, "asset", "assetSymbol", "exchange", "name")).to eq asset_symbol.exchange.name
+      expect(result.dig("data", "transactions", 1, "broker", "name")).to eq broker.name
     end
   end
 end

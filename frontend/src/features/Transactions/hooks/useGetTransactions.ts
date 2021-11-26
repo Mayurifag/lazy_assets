@@ -4,12 +4,27 @@ import { GetTransactions_transactions as Transaction } from "./__generated__/Get
 export const GET_TRANSACTIONS = gql`
   query GetTransactions {
     transactions {
+      action
       id
       asset {
-        id
-        assetSymbolId
-        quantity
+        assetSymbol {
+          nameEn
+          symbol
+          exchange {
+            name
+          }
+        }
       }
+      broker {
+        name
+      }
+      quantity
+      priceForOneAssetInCents
+      totalPriceInCents
+      totalPriceCommissionInCents
+      accuredInterestInCents
+      currency
+      date
     }
   }
 `;
