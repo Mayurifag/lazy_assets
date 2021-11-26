@@ -8,4 +8,8 @@ class FeaturesConfig < ApplicationConfig
   def use_rails_api_only?
     !enable_graphiql?
   end
+
+  def trace_graphql_requests?
+    false
+  end
 end

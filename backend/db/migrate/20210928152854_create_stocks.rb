@@ -24,6 +24,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
       t.string :name_ru
       t.string :name_en
       t.references :exchange, null: false
+      # TODO: add here null: false + to object at graphql + regenerate
       t.string :symbol, index: {unique: true}
       t.string :last_source
       t.jsonb :last_source_initial_attributes
@@ -50,6 +51,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
     end
     add_index :assets, :quantity_in_brokers, using: :gin
 
+    # TODO: add reference to asset_symbol
     create_table :transactions, id: :uuid do |t|
       t.enum :action, enum_name: :action
       t.references :asset, null: false
