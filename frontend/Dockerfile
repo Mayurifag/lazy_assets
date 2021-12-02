@@ -1,6 +1,6 @@
 FROM node:lts-slim
 
-RUN yarn global add expo-cli apollo @expo/ngrok eslint typescript \
+RUN yarn global add expo-cli apollo @expo/ngrok@^4.1.0 eslint typescript \
     ;
 
 WORKDIR /usr/src/app

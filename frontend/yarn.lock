@@ -1589,6 +1589,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
 
+"@types/react-data-grid@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@types/react-data-grid/-/react-data-grid-4.0.7.tgz#5e88bb189f55dd0566543053bbb255ad0ee21ea5"
+  integrity sha512-eQ9MEZDEZ7wwUxdI9PB3Q6xDY3epEmwqIqkAdTdzRlkg7/kFCPqqVmokDm+SNZ/V8istgNerMRYjN7yxAukZPg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native@~0.64.12":
   version "0.64.19"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.64.19.tgz#2b888c082ad293fa0fa6ae34c5e9457cfb38e50a"
@@ -2771,6 +2778,11 @@ clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
+
+clsx@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 coa@^2.0.2:
   version "2.0.2"
@@ -7308,6 +7320,13 @@ rc@^1.0.1, rc@^1.1.6:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-data-grid@^7.0.0-beta.7:
+  version "7.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/react-data-grid/-/react-data-grid-7.0.0-beta.7.tgz#8ba471175a0ee63ec6ecaa7ba83422e8c894892a"
+  integrity sha512-RlU8JW3GCnKSNq8sr0f59qTjiSx0ArhWcBv5K5+ksklgJ+gQnFc5oVXOXu1aWgtqhiEzvov6Cn6vEi7Jczdwaw==
+  dependencies:
+    clsx "^1.1.1"
 
 react-dev-utils@~11.0.1:
   version "11.0.4"

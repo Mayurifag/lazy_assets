@@ -20,6 +20,7 @@
     "expo-status-bar": "~1.1.0",
     "graphql": "^16.0.1",
     "react": "17.0.1",
+    "react-data-grid": "^7.0.0-beta.7",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-dotenv": "^3.3.0",
@@ -29,6 +30,7 @@
     "@babel/core": "^7.12.9",
     "@expo/webpack-config": "^0.16.7",
     "@types/react": "~17.0.21",
+    "@types/react-data-grid": "^4.0.7",
     "@types/react-native": "~0.64.12",
     "typescript": "~4.3.5",
     "webpack-bundle-analyzer": "^4.5.0"
