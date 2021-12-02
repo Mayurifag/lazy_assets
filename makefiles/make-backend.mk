@@ -18,3 +18,20 @@ rspec:
 
 cred:
 	EDITOR=vim docker-compose exec backend rails credentials:edit
+
+db: migrate
+
+migrate:
+	bin/rails db:migrate
+
+db-reset:
+	bin/rails db:drop db:create db:migrate db:seed
+
+bundle:
+	docker-compose exec backend bundle $(ARGS)
+
+rubocop-fix:
+	docker-compose exec backend bundle exec standardrb -a
+
+back-sh:
+	docker-compose exec backend bash
