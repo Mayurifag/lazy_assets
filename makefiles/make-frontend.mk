@@ -6,3 +6,6 @@ yarn:
 
 yarn-add-dev:
 	docker-compose exec frontend yarn add -D $(ARGS)
+
+yarn-install:
+	docker-compose exec frontend yarn install

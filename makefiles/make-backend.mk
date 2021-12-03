@@ -4,9 +4,6 @@ routes:
 upg:
 	docker-compose run backend bundle update
 
-seed:
-	docker-compose exec backend rails db:seed
-
 rg:
 	docker-compose exec backend rails generate $(ARGS)
 
@@ -19,13 +16,14 @@ rspec:
 cred:
 	EDITOR=vim docker-compose exec backend rails credentials:edit
 
-db: migrate
+db-migrate:
+	docker-compose exec backend rails db:migrate
 
-migrate:
-	bin/rails db:migrate
+db-seed:
+	docker-compose exec backend rails db:seed
 
 db-reset:
-	bin/rails db:drop db:create db:migrate db:seed
+	docker-compose exec backend rails db:drop db:create db:migrate
 
 bundle:
 	docker-compose exec backend bundle $(ARGS)
@@ -35,3 +33,6 @@ rubocop-fix:
 
 back-sh:
 	docker-compose exec backend bash
+
+bundle-install:
+	docker-compose exec backend bundle install
