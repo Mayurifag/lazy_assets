@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_152854) do
+ActiveRecord::Schema.define(version: 2021_12_03_025258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,12 +33,14 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
 
   create_table "asset_symbols", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
+    t.enum "currency", enum_name: "currency"
     t.bigint "exchange_id", null: false
+    t.integer "last_price_in_cents"
     t.string "last_source"
     t.jsonb "last_source_initial_attributes"
     t.string "name_en"
     t.string "name_ru"
-    t.string "symbol"
+    t.string "symbol", null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exchange_id"], name: "index_asset_symbols_on_exchange_id"
     t.index ["symbol"], name: "index_asset_symbols_on_symbol", unique: true
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
     t.integer "accured_interest_in_cents"
     t.enum "action", enum_name: "action"
     t.bigint "asset_id", null: false
+    t.bigint "asset_symbol_id", null: false
     t.bigint "broker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.enum "currency", null: false, enum_name: "currency"
@@ -98,7 +101,13 @@ ActiveRecord::Schema.define(version: 2021_09_28_152854) do
     t.integer "total_price_in_cents", default: 0, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["asset_id"], name: "index_transactions_on_asset_id"
+    t.index ["asset_symbol_id"], name: "index_transactions_on_asset_symbol_id"
     t.index ["broker_id"], name: "index_transactions_on_broker_id"
   end
 
+  add_foreign_key "asset_symbols", "exchanges"
+  add_foreign_key "assets", "asset_symbols"
+  add_foreign_key "transactions", "asset_symbols"
+  add_foreign_key "transactions", "assets"
+  add_foreign_key "transactions", "brokers"
 end

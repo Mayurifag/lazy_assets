@@ -23,8 +23,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
     create_table :asset_symbols do |t|
       t.string :name_ru
       t.string :name_en
-      t.references :exchange, null: false
-      # TODO: add here null: false + to object at graphql + regenerate
+      t.references :exchange, null: false, foreign_key: true
       t.string :symbol, index: {unique: true}
       t.string :last_source
       t.jsonb :last_source_initial_attributes
@@ -42,7 +41,7 @@ class CreateStocks < ActiveRecord::Migration[7.0]
       t.decimal :average_price_in_cents, null: false, default: 0
       t.enum :average_price_currency, enum_name: :currency
       t.decimal :quantity, null: false, default: 0
-      t.references :asset_symbol, null: false, index: {unique: true}
+      t.references :asset_symbol, null: false, index: {unique: true}, foreign_key: true
       t.jsonb :quantity_in_brokers
       t.jsonb :other
       t.integer :lock_version, default: 0
@@ -51,11 +50,10 @@ class CreateStocks < ActiveRecord::Migration[7.0]
     end
     add_index :assets, :quantity_in_brokers, using: :gin
 
-    # TODO: add reference to asset_symbol
     create_table :transactions, id: :uuid do |t|
       t.enum :action, enum_name: :action
-      t.references :asset, null: false
-      t.references :broker, null: false
+      t.references :asset, null: false, foreign_key: true
+      t.references :broker, null: false, foreign_key: true
       t.decimal :quantity, null: false
       t.decimal :price_for_one_asset_in_cents, null: false, default: 0
       t.integer :total_price_in_cents, null: false, default: 0

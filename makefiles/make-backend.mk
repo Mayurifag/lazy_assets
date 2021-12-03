@@ -16,14 +16,20 @@ rspec:
 cred:
 	EDITOR=vim docker-compose exec backend rails credentials:edit
 
+db-rollback:
+	docker-compose exec backend rails db:rollback
+
 db-migrate:
 	docker-compose exec backend rails db:migrate
 
 db-seed:
 	docker-compose exec backend rails db:seed
 
-db-reset:
+db-reset: db-set-development
 	docker-compose exec backend rails db:drop db:create db:migrate
+
+db-set-development:
+	docker-compose exec backend rails db:environment:set RAILS_ENV=development
 
 bundle:
 	docker-compose exec backend bundle $(ARGS)

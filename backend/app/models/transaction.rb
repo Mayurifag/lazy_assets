@@ -1,6 +1,7 @@
 class Transaction < ApplicationRecord
   belongs_to :asset
   belongs_to :broker
+  belongs_to :asset_symbol
 
   named_enum :action, %w[
     buy

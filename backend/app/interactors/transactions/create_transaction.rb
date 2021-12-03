@@ -52,7 +52,7 @@ module Transactions
       asset_interactor = Assets::CreateOrUpdateAsset.call(params)
 
       if asset_interactor.success?
-        Success(input.merge(asset: asset_interactor.success).except(:asset_symbol))
+        Success(input.merge(asset: asset_interactor.success))
       else
         Failure(errors: asset_interactor.failure[:errors])
       end

@@ -14,6 +14,7 @@ ENV LANG=C.UTF-8 \
 # postgresql-dev - pg
 # tzdata - tzinfo-data to prevent TZInfo::DataSourceNotFound: tzinfo-data is not present on rails db create/migrate/etc.
 # postgresql-client - for pg_dump thats used to make structure.sql [supports pg enums]
+# vim - edit credentials
 RUN apk add --update --no-cache \
         build-base \
         git \
