@@ -10,13 +10,14 @@ module Types
     # TODO: move
     # https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-graphql-api
 
-    field :transactions,
-      [Types::TransactionType],
-      null: false,
-      description: "Returns a list of transactions"
-
+    field :transactions, [Types::TransactionType], description: "Returns a list of transactions"
     def transactions
       Transaction.all
+    end
+
+    field :assets, [Types::AssetType], description: "Returns a list of assets"
+    def assets
+      Asset.all
     end
   end
 end

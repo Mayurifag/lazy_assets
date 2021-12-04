@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { Currency } from "./../../../../../__generated__/globalTypes";
+
 // ====================================================
 // GraphQL query operation: GetTransactions
 // ====================================================
@@ -33,7 +35,7 @@ export interface GetTransactions_transactions {
   quantity: number;
   priceForOneAssetInCents: number;
   accuredInterestInCents: number | null;
-  currency: string;
+  currency: Currency;
   date: any | null;
   totalPricePresented: string;
   totalPriceCommissionPresented: string;
@@ -45,5 +47,5 @@ export interface GetTransactions {
   /**
    * Returns a list of transactions
    */
-  transactions: GetTransactions_transactions[];
+  transactions: GetTransactions_transactions[] | null;
 }
