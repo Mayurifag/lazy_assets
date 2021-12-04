@@ -10,6 +10,7 @@ module Types
     # field :last_source_initial_attributes, Types::JsonbType, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :currency, Types::Enums::CurrencyType, null: false
 
     def exchange
       RecordLoader.for(Exchange).load(object.exchange_id)

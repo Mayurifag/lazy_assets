@@ -5,7 +5,7 @@ module Transactions
       params do
         required(:action).filled(included_in?: Transaction.actions.keys)
         required(:date).filled(:date) # TODO: 2000-01-01 < date < Date.tomorrow
-        required(:currency).filled(included_in?: CurrencyCollection.all) # TODO: finded asset currency equals that
+        required(:currency).filled(included_in?: CurrencyCollection.codes) # TODO: finded asset currency equals that
         optional(:accured_interest_in_cents).filled(:integer) # TODO: gteq 0
         required(:total_price_in_cents).filled(:integer) # TODO: gteq 0
         required(:quantity).filled(:decimal) # TODO: gt 0

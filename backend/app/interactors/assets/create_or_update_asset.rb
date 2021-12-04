@@ -2,7 +2,7 @@ module Assets
   class CreateOrUpdateAsset < BaseInteractor
     class Contract < BaseContract
       params do
-        required(:currency).filled(included_in?: CurrencyCollection.all) # TODO: finded asset currency equals that
+        required(:currency).filled(included_in?: CurrencyCollection.codes) # TODO: finded asset currency equals that
         required(:add_price_in_cents).filled(:integer) # TODO: gteq 0
         required(:add_quantity).filled(:decimal) # TODO: gt 0
         required(:asset_symbol).filled(type?: AssetSymbol)

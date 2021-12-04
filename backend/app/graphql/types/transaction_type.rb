@@ -13,7 +13,7 @@ module Types
     field :total_price_in_cents, Integer, null: false
     field :total_price_commission_in_cents, Integer, null: false
     field :accured_interest_in_cents, Integer, null: true
-    field :currency, String, null: false
+    field :currency, Types::Enums::CurrencyType, null: false
     field :date, GraphQL::Types::ISO8601Date, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false

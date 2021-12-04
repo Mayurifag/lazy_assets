@@ -17,5 +17,5 @@ class Transaction < ApplicationRecord
   # TODO: i18n
   translate_enum :action
 
-  named_enum :currency, CurrencyCollection.all
+  named_enum :currency, CurrencyCollection.codes
 end
