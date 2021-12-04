@@ -2,7 +2,7 @@ class ApiSchema < GraphQL::Schema
   mutation Types::MutationType
   query Types::QueryType
   use GraphQL::Batch
-  tracer ::MyCustomTracer.new if FeaturesConfig.trace_graphql_requests?
+  # tracer ::MyCustomTracer.new if FeaturesConfig.trace_graphql_requests?
 
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)

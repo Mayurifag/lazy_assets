@@ -9,10 +9,6 @@ class FeaturesConfig < ApplicationConfig
     not_production?
   end
 
-  def trace_graphql_requests?
-    false
-  end
-
   private
 
   def production?
