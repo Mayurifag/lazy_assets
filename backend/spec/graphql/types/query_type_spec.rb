@@ -22,6 +22,9 @@ RSpec.describe Types::QueryType do
                 name
               }
             }
+            asset {
+              quantity
+            }
             broker {
               name
             }
@@ -45,6 +48,7 @@ RSpec.describe Types::QueryType do
 
     it "returns correctly answers with array of Transaction's hashes" do
       expect(result.dig("data", "transactions", 0, "assetSymbol", "exchange", "name")).to eq asset_symbol.exchange.name
+      expect(result.dig("data", "transactions", 0, "asset", "quantity")).to eq asset.quantity
       expect(result.dig("data", "transactions", 1, "broker", "name")).to eq broker.name
     end
   end
