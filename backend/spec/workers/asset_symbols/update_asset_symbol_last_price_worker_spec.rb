@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe AssetSymbols::UpdateAssetSymbolCurrentPriceWorker, type: :worker do
+RSpec.describe AssetSymbols::UpdateAssetSymbolLastPriceWorker, type: :worker do
   let_it_be(:asset_symbol) { create :asset_symbol, :with_exchange, symbol: "AAPL" }
 
   describe "perform_async" do
     subject do
-      VCR.use_cassette("interactors/asset_symbols/update_asset_symbol_current_price_worker__200") do
+      VCR.use_cassette("interactors/asset_symbols/update_asset_symbol_last_price_worker__200") do
         Sidekiq::Testing.inline! do
           described_class.perform_async(ticker_symbol)
         end
