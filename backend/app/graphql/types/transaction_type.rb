@@ -33,28 +33,5 @@ module Types
     def asset_symbol
       RecordLoader.for(AssetSymbol).load(object.asset_symbol_id)
     end
-
-    # I consider this shouldn't be metaprogrammed
-    def total_price_presented
-      Money.new(object.total_price_in_cents, object.currency).format
-    end
-
-    def total_price_commission_presented
-      return "-" if object.total_price_commission_in_cents.blank? || object.total_price_commission_in_cents.zero?
-
-      Money.new(object.total_price_commission_in_cents, object.currency).format
-    end
-
-    def accured_interest_presented
-      return "-" if object.accured_interest_in_cents.blank? || object.accured_interest_in_cents.zero?
-
-      Money.new(object.accured_interest_in_cents, object.currency).format
-    end
-
-    def price_for_one_asset_presented
-      return "-" if object.price_for_one_asset_in_cents.blank? || object.price_for_one_asset_in_cents.zero?
-
-      Money.new(object.price_for_one_asset_in_cents, object.currency).format
-    end
   end
 end

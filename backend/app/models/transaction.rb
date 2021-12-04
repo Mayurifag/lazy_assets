@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  include TransactionPresenter
+
   belongs_to :asset
   belongs_to :broker
   belongs_to :asset_symbol
