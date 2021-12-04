@@ -6,7 +6,7 @@ module Types
     field :quantity, Float, null: false
     field :asset_symbol_id, Integer, null: false
     field :asset_symbol, Types::AssetSymbolType, null: false
-    # field :quantity_in_brokers, Types::JsonbType, null: true
+    field :quantity_in_brokers, GraphQL::Types::JSON, null: true
     # field :other, Types::JsonbType, null: true
     field :lock_version, Integer, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
