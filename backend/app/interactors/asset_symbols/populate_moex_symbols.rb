@@ -52,7 +52,7 @@ module AssetSymbols
     end
 
     def data_from_made_request
-      @data_from_made_request ||= FinnhubRuby::DefaultApi.new.stock_symbols(MOEX_FINNHUB_EXCHANGE_SYMBOL)
+      @data_from_made_request ||= FinnhubConfig.api.stock_symbols(MOEX_FINNHUB_EXCHANGE_SYMBOL)
     end
   end
 end

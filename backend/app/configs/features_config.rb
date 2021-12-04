@@ -2,14 +2,24 @@
 # rails_config or idk
 class FeaturesConfig < ApplicationConfig
   def enable_graphiql?
-    !Rails.env.production?
+    not_production?
   end
 
-  def use_rails_api_only?
-    !enable_graphiql?
+  def enable_sidekiq_dashboard?
+    not_production?
   end
 
   def trace_graphql_requests?
     false
+  end
+
+  private
+
+  def production?
+    Rails.env.production?
+  end
+
+  def not_production?
+    !production?
   end
 end
