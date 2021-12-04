@@ -4,6 +4,8 @@ module Types
     field :action, String, null: true
     field :asset_id, Integer, null: false
     field :asset, Types::AssetType, null: false
+    field :asset_symbol_id, Integer, null: false
+    field :asset_symbol, Types::AssetSymbolType, null: false
     field :broker_id, Integer, null: false
     field :broker, Types::BrokerType, null: false
     field :quantity, Float, null: false
@@ -26,6 +28,10 @@ module Types
 
     def broker
       RecordLoader.for(Broker).load(object.broker_id)
+    end
+
+    def asset_symbol
+      RecordLoader.for(AssetSymbol).load(object.asset_symbol_id)
     end
 
     # I consider this shouldn't be metaprogrammed

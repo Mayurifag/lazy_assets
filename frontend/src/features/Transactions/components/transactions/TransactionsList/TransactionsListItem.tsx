@@ -10,9 +10,9 @@ const TransactionsListItem: React.FC<{ transaction: Transaction }> = ({
     <div id={transaction.id}>
       <p>{transaction.action}</p>
       <p>
-        {transaction.asset.assetSymbol.nameEn}
+        {transaction.assetSymbol.nameEn}
         {" / "}
-        {transaction.asset.assetSymbol.symbol}
+        {transaction.assetSymbol.symbol}
       </p>
       <p>{transaction.date}</p>
       <p>{transaction.quantity}</p>

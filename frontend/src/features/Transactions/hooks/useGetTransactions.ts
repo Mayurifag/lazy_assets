@@ -6,13 +6,11 @@ export const GET_TRANSACTIONS = gql`
     transactions {
       action
       id
-      asset {
-        assetSymbol {
-          nameEn
-          symbol
-          exchange {
-            name
-          }
+      assetSymbol {
+        nameEn
+        symbol
+        exchange {
+          name
         }
       }
       broker {

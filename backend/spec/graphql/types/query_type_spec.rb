@@ -6,7 +6,7 @@ RSpec.describe Types::QueryType do
     create :asset, asset_symbol: asset_symbol
   end
   let_it_be(:broker) { create :broker }
-  let_it_be(:transactions) { create_pair(:transaction, broker: broker, asset: asset) }
+  let_it_be(:transactions) { create_pair(:transaction, broker: broker, asset: asset, asset_symbol: asset_symbol) }
 
   describe "transactions" do
     let(:query) do
@@ -15,13 +15,11 @@ RSpec.describe Types::QueryType do
           transactions {
             action
             id
-            asset {
-              assetSymbol {
-                nameEn
-                symbol
-                exchange {
-                  name
-                }
+            assetSymbol {
+              nameEn
+              symbol
+              exchange {
+                name
               }
             }
             broker {
@@ -46,7 +44,7 @@ RSpec.describe Types::QueryType do
     end
 
     it "returns correctly answers with array of Transaction's hashes" do
-      expect(result.dig("data", "transactions", 0, "asset", "assetSymbol", "exchange", "name")).to eq asset_symbol.exchange.name
+      expect(result.dig("data", "transactions", 0, "assetSymbol", "exchange", "name")).to eq asset_symbol.exchange.name
       expect(result.dig("data", "transactions", 1, "broker", "name")).to eq broker.name
     end
   end

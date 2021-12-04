@@ -7,21 +7,16 @@
 // GraphQL query operation: GetTransactions
 // ====================================================
 
-export interface GetTransactions_transactions_asset_assetSymbol_exchange {
+export interface GetTransactions_transactions_assetSymbol_exchange {
   __typename: "Exchange";
   name: string;
 }
 
-export interface GetTransactions_transactions_asset_assetSymbol {
+export interface GetTransactions_transactions_assetSymbol {
   __typename: "AssetSymbol";
   nameEn: string | null;
   symbol: string | null;
-  exchange: GetTransactions_transactions_asset_assetSymbol_exchange;
-}
-
-export interface GetTransactions_transactions_asset {
-  __typename: "Asset";
-  assetSymbol: GetTransactions_transactions_asset_assetSymbol;
+  exchange: GetTransactions_transactions_assetSymbol_exchange;
 }
 
 export interface GetTransactions_transactions_broker {
@@ -33,7 +28,7 @@ export interface GetTransactions_transactions {
   __typename: "Transaction";
   action: string | null;
   id: string;
-  asset: GetTransactions_transactions_asset;
+  assetSymbol: GetTransactions_transactions_assetSymbol;
   broker: GetTransactions_transactions_broker;
   quantity: number;
   priceForOneAssetInCents: number;

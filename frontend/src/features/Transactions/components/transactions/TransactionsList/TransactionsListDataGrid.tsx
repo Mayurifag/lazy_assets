@@ -26,9 +26,9 @@ const columns: readonly Column<Transaction>[] = [
     formatter: ({ row }: FormatterProps<Transaction, unknown>) => {
       return (
         <>
-          {row.asset.assetSymbol.nameEn}
+          {row.assetSymbol.nameEn}
           {" / "}
-          {row.asset.assetSymbol.symbol}
+          {row.assetSymbol.symbol}
         </>
       );
     },

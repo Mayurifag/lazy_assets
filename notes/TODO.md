@@ -6,7 +6,7 @@
 
 ## Backend
 
-- ...
+- Logging thats fine for docker
 
 ## Repository
 

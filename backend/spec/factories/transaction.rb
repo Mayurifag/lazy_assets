@@ -15,5 +15,9 @@ FactoryBot.define do
     trait :with_broker do
       broker
     end
+
+    trait :with_asset_symbol do
+      asset_symbol
+    end
   end
 end
