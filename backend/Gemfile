@@ -4,11 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.2"
 
 gem "bootsnap", ">= 1.4.4", require: false
+gem "hiredis"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "rack-cors"
 gem "rails", "~> 7.0.0.alpha2"
-gem "redis", "~> 4.0"
+gem "redis", "~> 4.0", require: ["redis", "redis/connection/hiredis"]
 
 gem "activerecord-postgres_enum",
   github: "noelrappin/activerecord-postgres_enum",
@@ -27,6 +28,7 @@ gem "graphql-batch"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
+gem "sidekiq"
 gem "strong_migrations"
 gem "translate_enum"
 
@@ -53,6 +55,7 @@ end
 group :test do
   gem "faker"
   gem "rspec_junit_formatter"
+  gem "rspec-sidekiq"
   gem "simplecov"
   gem "simplecov-console"
   gem "test-prof"
