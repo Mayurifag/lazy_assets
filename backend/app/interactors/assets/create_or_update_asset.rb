@@ -16,6 +16,7 @@ module Assets
     map :find_or_initialize_asset
     map :calculate_attributes
     step :save_asset
+    step :update_last_price
 
     private
 
@@ -62,9 +63,14 @@ module Assets
 
     def save_asset(input)
       input[:asset].save!
-      Success(input[:asset])
+      Success(input)
     rescue => e
       Failure(e)
+    end
+
+    def update_last_price(input)
+      AssetSymbols::UpdateAssetSymbolLastPriceWorker.perform_async(input[:asset_symbol].symbol)
+      Success(input[:asset])
     end
   end
 end
