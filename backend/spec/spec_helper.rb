@@ -1,7 +1,6 @@
-ENV["RAILS_ENV"] ||= "test"
+ENV["RAILS_ENV"] = "test"
+
 require "simplecov"
-require "webmock/rspec"
-require "zonebie/rspec"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

@@ -7,10 +7,10 @@ default: &default
   port: <%= ENV.fetch("PGPORT", 5432) %>
   username: <%= ENV.fetch("PGUSER", 'postgres') %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
-  connect_timeout: 2
-  checkout_timeout: 5
-  variables:
-    statement_timeout: 5000
+  # connect_timeout: 2
+  # checkout_timeout: 5
+  # variables:
+  #   statement_timeout: 5000
 
 development:
   <<: *default

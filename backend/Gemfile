@@ -39,7 +39,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "factory_trace"
   gem "graphiql-rails"
-  gem "isolator"
+  # gem "isolator"
   gem "parallel_tests"
   gem "routes_lazy_routes"
   gem "rspec-rails"
