@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "populating brokers and exchanges"
+
 BROKERS = [
   {id: 1, name: "Other"},
   {id: 2, name: "Binance"},
@@ -32,49 +34,50 @@ Exchange.upsert_all(EXCHANGES)
 
 puts "populating moex"
 AssetSymbols::PopulateMoexSymbols.call
-puts "populating us"
-AssetSymbols::PopulateUsSymbols.call
+# puts "populating us"
+# AssetSymbols::PopulateUsSymbols.call
 
+puts "populating transactions"
 Transactions::CreateTransaction.call({
   action: "buy",
   date: Date.today,
-  currency: "USD",
+  currency: "RUB",
   total_price_in_cents: 1000,
   quantity: 10,
   total_price_commission_in_cents: 10,
-  asset_symbol: AssetSymbol.find_by(symbol: "AAPL"),
+  asset_symbol: AssetSymbol.find_by(symbol: "SBER.ME"),
   broker: Broker.find_by(name: "Тинькофф")
 })
 
 Transactions::CreateTransaction.call({
   action: "buy",
   date: Date.yesterday,
-  currency: "USD",
+  currency: "RUB",
   total_price_in_cents: 900,
   quantity: 10,
   total_price_commission_in_cents: 50,
-  asset_symbol: AssetSymbol.find_by(symbol: "AAPL"),
+  asset_symbol: AssetSymbol.find_by(symbol: "SBER.ME"),
   broker: Broker.find_by(name: "ВТБ")
 })
 
 Transactions::CreateTransaction.call({
   action: "buy",
   date: Date.yesterday,
-  currency: "USD",
+  currency: "RUB",
   total_price_in_cents: 900,
   quantity: 10,
   total_price_commission_in_cents: 50,
-  asset_symbol: AssetSymbol.find_by(symbol: "INTC"),
+  asset_symbol: AssetSymbol.find_by(symbol: "GMKN.ME"),
   broker: Broker.find_by(name: "ВТБ")
 })
 
 Transactions::CreateTransaction.call({
   action: "buy",
   date: Date.yesterday,
-  currency: "USD",
+  currency: "RUB",
   total_price_in_cents: 900,
   quantity: 10,
   total_price_commission_in_cents: 50,
-  asset_symbol: AssetSymbol.find_by(symbol: "MSFT"),
+  asset_symbol: AssetSymbol.find_by(symbol: "FXRL.ME"),
   broker: Broker.find_by(name: "ВТБ")
 })

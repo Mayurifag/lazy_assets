@@ -69,6 +69,7 @@ module Assets
     end
 
     def update_last_price(input)
+      # TODO: last price + company profile + image download
       AssetSymbols::UpdateAssetSymbolLastPriceWorker.perform_async(input[:asset_symbol].symbol)
       Success(input[:asset])
     end

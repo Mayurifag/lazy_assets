@@ -2,6 +2,7 @@ module Common
   # Downloads image from URL and stores it into active storage
   # @example
   #   Common::ImageDownloader.call(attachable_object: AssetSymbol.find_by(symbol: "GMKN.ME").logo, image_url: "https://finnhub.io/api/logo?symbol=GMKN.ME", filename: "GMKN.ME-logo")
+  # TODO: add spec
   class ImageDownloader < BaseInteractor
     class Contract < BaseContract
       params do
