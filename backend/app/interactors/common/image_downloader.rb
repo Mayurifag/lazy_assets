@@ -33,8 +33,8 @@ module Common
     rescue => e
       Failure(msg: "Image wasn't able to be downloaded", error: e)
     ensure
-      image.close
-      image.unlink
+      image&.close
+      image&.unlink
     end
 
     def attach_image_to_object(input)
