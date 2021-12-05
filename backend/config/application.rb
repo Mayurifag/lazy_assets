@@ -37,5 +37,6 @@ module Api
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.active_storage.variant_processor = :vips
+    config.active_job.queue_adapter = :sidekiq # for active storage mostly
   end
 end

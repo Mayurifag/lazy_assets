@@ -11,8 +11,6 @@ RSpec.describe AssetSymbols::UpdateAssetSymbolCompanyProfileInfo, type: :interac
         end
       end
 
-      it { is_expected.to be_success }
-
       it do
         expect { subject }
           .to change { asset_symbol.country }.from(nil).to("RU")
