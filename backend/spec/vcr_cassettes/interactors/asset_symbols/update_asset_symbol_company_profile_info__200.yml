@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://finnhub.io/api/v1/stock/profile2?symbol=GMKN.ME&token=<FINNHUB_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - OpenAPI-Generator/1.1.10/ruby
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sun, 05 Dec 2021 02:03:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '350'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Content-Length
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '59'
+      X-Ratelimit-Reset:
+      - '1638669854'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=NoccQWYR22piEi2kX0KHnT%2BLbPC7PBUQcQd5%2BTjLxWqHTgVB3y0Pc1TFsU9CWqLEl%2BL1NxXpESVkivv%2Bfk8s%2F7AVABNCNuUDmmkaOL2qGJ4to5BmwOUbMcbg%2BEM%2B"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6b89b260b9f87034-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"country":"RU","currency":"RUB","exchange":"MOSCOW EXCHANGE","finnhubIndustry":"Metals
+        \u0026 Mining","ipo":"2001-06-15","logo":"https://finnhub.io/api/logo?symbol=GMKN.ME","marketCapitalization":3467475,"name":"GMK
+        Noril''skiy Nikel'' PAO","phone":"74957877667.0","shareOutstanding":152.863397,"ticker":"GMKN.ME","weburl":"https://www.nornickel.ru/"}'
+  recorded_at: Sun, 05 Dec 2021 02:03:14 GMT
+recorded_with: VCR 6.0.0
