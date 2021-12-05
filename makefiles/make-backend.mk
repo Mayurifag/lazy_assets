@@ -25,13 +25,17 @@ db-rollback:
 db-migrate:
 	docker-compose exec backend rails db:migrate
 
+db-recreate:
+	docker-compose exec backend rails db:drop db:create db:migrate
+
 db-seed:
 	docker-compose exec backend rails db:seed
 
-db-reset: db-set-development
+clean-storage:
 	rm -rf ./backend/storage/*
 	touch ./backend/storage/.keep
-	docker-compose exec backend rails db:drop db:create db:migrate
+
+db-reset: db-set-development clean-storage db-recreate
 
 db-set-development:
 	docker-compose exec backend rails db:environment:set RAILS_ENV=development
