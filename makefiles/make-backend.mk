@@ -1,3 +1,6 @@
+rails:
+	docker-compose exec backend bundle exec rails $(ARGS)
+
 routes:
 	docker-compose run backend rails routes | grep "$(ARGS)"
 
@@ -26,6 +29,8 @@ db-seed:
 	docker-compose exec backend rails db:seed
 
 db-reset: db-set-development
+	rm -rf ./backend/storage/*
+	touch ./backend/storage/.keep
 	docker-compose exec backend rails db:drop db:create db:migrate
 
 db-set-development:
@@ -42,3 +47,9 @@ back-sh:
 
 bundle-install:
 	docker-compose exec backend bundle install
+
+ord:
+	docker-compose exec backend bundle exec ordinare
+
+backend-sh:
+	docker-compose exec backend sh

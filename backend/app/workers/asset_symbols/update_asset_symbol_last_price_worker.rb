@@ -5,7 +5,6 @@ class AssetSymbols::UpdateAssetSymbolLastPriceWorker
     asset_symbol = AssetSymbol.find_by(symbol: ticker_symbol_string)
     if asset_symbol.present?
       # TODO: make logging, thats ok for docker and test environment
-      # puts "UpdateAssetSymbolLastPriceWorker: processing #{ticker_symbol_string}"
       ::AssetSymbols::UpdateAssetSymbolLastPrice.call(asset_symbol: asset_symbol)
     end
   end

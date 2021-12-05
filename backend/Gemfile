@@ -19,12 +19,14 @@ gem "anyway_config"
 gem "awesome_rails_console",
   github: "xunker/awesome_rails_console",
   branch: "pry-0.13.0-compatibility"
+gem "down"
 gem "dry-transaction"
 gem "dry-validation"
 gem "fast_blank", platform: :mri
 gem "finnhub_ruby"
 gem "graphql"
 gem "graphql-batch"
+gem "image_processing"
 gem "mobility"
 gem "money"
 gem "nilify_blanks"
@@ -54,8 +56,8 @@ end
 
 group :test do
   gem "faker"
-  gem "rspec_junit_formatter"
   gem "rspec-sidekiq"
+  gem "rspec_junit_formatter"
   gem "simplecov"
   gem "simplecov-console"
   gem "test-prof"

@@ -13,7 +13,7 @@ stop: down
 
 restart: stop start
 
-reset: down up yarn-install bundle-install db-reset
+reset: down build up yarn-install bundle-install db-reset
 
 provision: reset db-seed
 

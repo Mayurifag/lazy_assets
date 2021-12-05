@@ -11,7 +11,6 @@ module AssetSymbols
     include Dry::Transaction
 
     validate_input contract: Contract
-
     step :request_quote_for_asset
     map :set_attributes_for_asset
     step :save_asset_symbol

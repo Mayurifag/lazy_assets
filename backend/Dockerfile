@@ -15,14 +15,17 @@ ENV LANG=C.UTF-8 \
 # tzdata - tzinfo-data to prevent TZInfo::DataSourceNotFound: tzinfo-data is not present on rails db create/migrate/etc.
 # postgresql-client - for pg_dump thats used to make structure.sql [supports pg enums]
 # vim - edit credentials
+# vips-dev, libjpeg-turbo - image processing
 RUN apk add --update --no-cache \
         build-base \
         git \
-        postgresql-dev \
+        libjpeg-turbo \
         postgresql-client \
+        postgresql-dev \
         tzdata \
-        xz-dev \
         vim \
+        vips-dev \
+        xz-dev \
     && ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" > /etc/timezone \
     && echo 'gem: --no-document' >> ~/.gemrc \
