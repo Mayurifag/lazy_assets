@@ -55,5 +55,19 @@ ord:
 backend-sh:
 	docker-compose exec backend sh
 
+# gen-grpc-ruby:
+# 	docker run --rm -v $(shell pwd):/mnt memominsk/protobuf-alpine:latest --grpc_out=./backend/app/rpc --ruby_out=./backend/app/rpc /mnt/proto/AssetSymbols.proto
+#
+#  	docker-compose run backend grpc_tools_ruby_protoc -I /proto/ --ruby_out=/usr/src/app/rpc/proto --grpc_out=/usr/src/app/rpc/proto /proto/AssetSymbols.proto
+
 gen-grpc-ruby:
-	docker run --rm -v $(shell pwd):/mnt memominsk/protobuf-alpine:latest --ruby_out=./backend/app/rpc /mnt/proto/AssetSymbols.proto
+	mkdir -p ./backend/app/rpc/proto
+	docker run --rm \
+		-v $(shell pwd):$(shell pwd) \
+		-w $(shell pwd) \
+		znly/protoc \
+		--plugin=protoc-gen-grpc=/usr/bin/grpc_ruby_plugin \
+		--ruby_out=./backend/app/rpc/proto \
+		--grpc_out=./backend/app/rpc/proto \
+		-I ./proto/ \
+		./proto/*.proto
