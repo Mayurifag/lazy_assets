@@ -26,6 +26,7 @@ gem "fast_blank", platform: :mri
 gem "finnhub_ruby"
 gem "graphql"
 gem "graphql-batch"
+gem "gruf"
 gem "image_processing"
 gem "mobility"
 gem "money"

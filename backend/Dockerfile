@@ -11,20 +11,22 @@ ENV LANG=C.UTF-8 \
 
 # build-base, xz-dev -- nokogiri
 # git - to update bundler audit
+# gcompat - grpc
+# postgresql-client - for pg_dump thats used to make structure.sql [supports pg enums]
 # postgresql-dev - pg
 # tzdata - tzinfo-data to prevent TZInfo::DataSourceNotFound: tzinfo-data is not present on rails db create/migrate/etc.
-# postgresql-client - for pg_dump thats used to make structure.sql [supports pg enums]
 # vim - edit credentials
-# vips-dev, libjpeg-turbo - image processing
+# vips, libjpeg-turbo - image processing
 RUN apk add --update --no-cache \
         build-base \
         git \
+        gcompat \
         libjpeg-turbo \
         postgresql-client \
         postgresql-dev \
         tzdata \
         vim \
-        vips-dev \
+        vips \
         xz-dev \
     && ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" > /etc/timezone \

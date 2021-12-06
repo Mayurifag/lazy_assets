@@ -6,6 +6,7 @@ x-backend: &x-backend
     context: backend
   volumes:
     - ./backend:/usr/src/app:cached
+    - ./proto:/proto
     - rails_cache:/usr/src/app/tmp/cache
     - bundle:/bundle
   environment:

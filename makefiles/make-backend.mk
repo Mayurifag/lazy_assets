@@ -46,9 +46,6 @@ bundle:
 rubocop-fix:
 	docker-compose exec backend bundle exec standardrb -a
 
-back-sh:
-	docker-compose exec backend bash
-
 bundle-install:
 	docker-compose exec backend bundle install
 
@@ -57,3 +54,6 @@ ord:
 
 backend-sh:
 	docker-compose exec backend sh
+
+gen-grpc-ruby:
+	docker run --rm -v $(shell pwd):/mnt memominsk/protobuf-alpine:latest --ruby_out=./backend/app/rpc /mnt/proto/AssetSymbols.proto
