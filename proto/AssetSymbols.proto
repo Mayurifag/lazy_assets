@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package rpc;
+
+service AssetSymbols {
+  rpc GetAssetSymbolTickerPrice(GetAssetSymbolTickerPriceRequest)
+      returns (GetAssetSymbolTickerPriceResponse) {}
+}
+
+message Ticker {
+  string ticker = 1;
+  float price = 2;
+  string currency = 3;
+}
+
+message GetAssetSymbolTickerPriceRequest { string ticker = 1; }
+
+message GetAssetSymbolTickerPriceResponse { Ticker ticker = 1; }
